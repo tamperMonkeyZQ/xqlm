@@ -21,4 +21,18 @@ public class RecruitServiceImpl implements RecruitService {
         List<Recruit> list = recruitMapper.getAll();
         return list;
     }
+
+    /**
+     * 根据工作地点条件或职位，模糊查询
+     * @param pageNumber
+     * @param pageSize
+     * @param searchVO
+     * @return
+     */
+    @Override
+    public List<Recruit> search(int pageNumber, int pageSize, String searchVO) {
+        PageHelper.startPage(pageNumber, pageSize);
+        List<Recruit> list = recruitMapper.getAllBySearchVO(searchVO);
+        return list;
+    }
 }
