@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html><head>
+<html>
+<head>
     <meta charset="utf-8" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -111,28 +112,6 @@
         h1, .h1, h2, .h2, h3, .h3 {
             margin-top: 30px;
         }
-        .tablebox {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-            background-color: rgba(6, 26, 103, 0);
-        }
-
-        .tbl-header {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 999;
-        }
-
-        .tbl-body {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
         .tablebox table {
             width: 100%;
         }
@@ -169,7 +148,7 @@
             <ul class="nav navbar-nav pull-right mainNav">
                 <li><a href="#">企业信息</a></li>
                 <li><a href="#">院校信息</a></li>
-                <li><a href="#">招聘信息</a></li>
+                <li><a href="${pageContext.request.contextPath }/upStage/recruit.action" target="_blank">招聘信息</a></li>
                 <li><a href="#">毕业生注册</a></li>
                 <li><a href="#">管理员登录</a></li>
             </ul>

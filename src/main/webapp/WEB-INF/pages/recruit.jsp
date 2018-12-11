@@ -25,7 +25,7 @@
     <script src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath }/assets/js/bootstrap-table/bootstrap-table.js"></script>
     <script src="${pageContext.request.contextPath }/assets/js/bootstrap-table/bootstrap-table-zh-CN.js"></script>
-    <script src="${pageContext.request.contextPath }/assets/js/univercity.js"></script>
+    <script src="${pageContext.request.contextPath }/assets/js/recruit.js"></script>
 </head>
 <body style="background-color: #fff;" class=" pace-done">
 <jsp:include page="Header.jsp"></jsp:include>
