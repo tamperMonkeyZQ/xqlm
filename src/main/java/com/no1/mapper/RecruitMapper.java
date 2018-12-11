@@ -4,6 +4,8 @@ import org.springframework.stereotype.Repository;
 
 import com.no1.domain.Recruit;
 
+import java.util.List;
+
 @Repository
 public interface RecruitMapper {
     int deleteByPrimaryKey(Integer reId);
@@ -17,4 +19,6 @@ public interface RecruitMapper {
     int updateByPrimaryKeySelective(Recruit record);
 
     int updateByPrimaryKey(Recruit record);
+
+    List<Recruit> getAll();
 }
