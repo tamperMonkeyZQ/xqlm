@@ -1,5 +1,6 @@
 package com.no1.serviceImpl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.no1.domain.Recruit;
 import com.no1.mapper.RecruitMapper;
@@ -7,7 +8,9 @@ import com.no1.service.RecruitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class RecruitServiceImpl implements RecruitService {
@@ -16,10 +19,14 @@ public class RecruitServiceImpl implements RecruitService {
     RecruitMapper recruitMapper;
 
     @Override
-    public List<Recruit> getAll(int pageNumber, int pageSize) {
-        PageHelper.startPage(pageNumber, pageSize);
-        List<Recruit> list = recruitMapper.getAll();
-        return list;
+    public Map<String, Object> getAll(int pageNumber, int pageSize) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        Page page =  PageHelper.startPage(pageNumber, pageSize);
+        List<Recruit> rows = recruitMapper.getAll();
+        long count = page.getTotal();
+        map.put("rows", rows);
+        map.put("total", count);
+        return map;
     }
 
     /**
@@ -30,9 +37,14 @@ public class RecruitServiceImpl implements RecruitService {
      * @return
      */
     @Override
-    public List<Recruit> search(int pageNumber, int pageSize, String searchVO) {
+    public Map<String, Object> search(int pageNumber, int pageSize, String searchVO) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        Page page =  PageHelper.startPage(pageNumber, pageSize);
         PageHelper.startPage(pageNumber, pageSize);
-        List<Recruit> list = recruitMapper.getAllBySearchVO(searchVO);
-        return list;
+        List<Recruit> rows = recruitMapper.getAllBySearchVO(searchVO);
+        long count = page.getTotal();
+        map.put("rows", rows);
+        map.put("total", count);
+        return map;
     }
 }
