@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("upStage")
@@ -47,30 +48,34 @@ public class UpStageController {
     public TableInfo recruitLoad(HttpServletResponse response, @RequestParam(value = "pageNumber") int pageNumber,
                                   @RequestParam(value = "pageSize") int pageSize){
         TableInfo tableInfo = new TableInfo();
-        List<Recruit> page = recruitService.getAll(pageNumber, pageSize);
-        tableInfo.setRows(page);
-        tableInfo.setTotal(12);
+        Map<String,Object> page = recruitService.getAll(pageNumber, pageSize);
+        tableInfo.setRows((List<Recruit>)page.get("rows"));
+        tableInfo.setTotal((long) page.get("total"));
+        System.out.println(page.get("total")+"ccccccccc");
         return tableInfo;
-    }@ResponseBody
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/recruitSearch.action",method = RequestMethod.GET)
     public TableInfo recruitSearch(HttpServletResponse response, @RequestParam(value = "pageNumber") int pageNumber,
                                   @RequestParam(value = "pageSize") int pageSize,
                                    @RequestParam(value = "searchVO") String searchVO){
         TableInfo tableInfo = new TableInfo();
-        List<Recruit> page = recruitService.search(pageNumber, pageSize,searchVO);
-        tableInfo.setRows(page);
-        tableInfo.setTotal(12);
+        Map<String,Object> page = recruitService.search(pageNumber, pageSize,searchVO);
+        tableInfo.setRows((List<Recruit>) page.get("rows"));
+        System.out.println(page.get("total")+"ccccccccc");
+        tableInfo.setTotal((long) page.get("total"));
         return tableInfo;
     }
     public class TableInfo{
-        private int total;
+        private long total;
         private List<?> rows;
 
-        public int getTotal() {
+        public long getTotal() {
             return total;
         }
 
-        public void setTotal(int total) {
+        public void setTotal(long total) {
             this.total = total;
         }
 
@@ -82,7 +87,7 @@ public class UpStageController {
             this.rows = rows;
         }
 
-        public TableInfo(int total, List<?> rows) {
+        public TableInfo(long total, List<?> rows) {
             this.total = total;
             this.rows = rows;
         }

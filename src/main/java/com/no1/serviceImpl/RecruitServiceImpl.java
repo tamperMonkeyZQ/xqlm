@@ -40,7 +40,6 @@ public class RecruitServiceImpl implements RecruitService {
     public Map<String, Object> search(int pageNumber, int pageSize, String searchVO) {
         Map<String,Object> map = new HashMap<String,Object>();
         Page page =  PageHelper.startPage(pageNumber, pageSize);
-        PageHelper.startPage(pageNumber, pageSize);
         List<Recruit> rows = recruitMapper.getAllBySearchVO(searchVO);
         long count = page.getTotal();
         map.put("rows", rows);

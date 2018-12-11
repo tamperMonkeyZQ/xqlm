@@ -20,9 +20,10 @@
   </sql>
 
   <select id="getAllBySearchVO" resultMap="BaseResultMap">
-        select * from
-        recruit
-        wherer re_local like concat(concat('%',#{searchVO}),'%')
+        select
+        <include refid="Base_Column_List"/>
+        from recruit
+        where re_local like concat(concat('%',#{searchVO}),'%')
         or re_duty like concat(concat('%',#{searchVO}),'%')
   </select>
 
