@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.no1.mapper.EmployMapper">
+  <resultMap id="BaseResultMap" type="com.no1.domain.Employ">
+    <id column="em_id" jdbcType="INTEGER" property="emId" />
+    <result column="em_re" jdbcType="INTEGER" property="emRe" />
+    <result column="em_stu" jdbcType="VARCHAR" property="emStu" />
+    <result column="em_status" jdbcType="INTEGER" property="emStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    em_id, em_re, em_stu, em_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employ
+    where em_id = #{emId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employ
+    where em_id = #{emId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.no1.domain.Employ">
+    insert into employ (em_id, em_re, em_stu, 
+      em_status)
+    values (#{emId,jdbcType=INTEGER}, #{emRe,jdbcType=INTEGER}, #{emStu,jdbcType=VARCHAR}, 
+      #{emStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.no1.domain.Employ">
+    insert into employ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="emId != null">
+        em_id,
+      </if>
+      <if test="emRe != null">
+        em_re,
+      </if>
+      <if test="emStu != null">
+        em_stu,
+      </if>
+      <if test="emStatus != null">
+        em_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="emId != null">
+        #{emId,jdbcType=INTEGER},
+      </if>
+      <if test="emRe != null">
+        #{emRe,jdbcType=INTEGER},
+      </if>
+      <if test="emStu != null">
+        #{emStu,jdbcType=VARCHAR},
+      </if>
+      <if test="emStatus != null">
+        #{emStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.no1.domain.Employ">
+    update employ
+    <set>
+      <if test="emRe != null">
+        em_re = #{emRe,jdbcType=INTEGER},
+      </if>
+      <if test="emStu != null">
+        em_stu = #{emStu,jdbcType=VARCHAR},
+      </if>
+      <if test="emStatus != null">
+        em_status = #{emStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where em_id = #{emId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.no1.domain.Employ">
+    update employ
+    set em_re = #{emRe,jdbcType=INTEGER},
+      em_stu = #{emStu,jdbcType=VARCHAR},
+      em_status = #{emStatus,jdbcType=INTEGER}
+    where em_id = #{emId,jdbcType=INTEGER}
+  </update>
+</mapper>

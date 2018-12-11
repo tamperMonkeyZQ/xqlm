@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.no1.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.no1.domain.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_brief" jdbcType="VARCHAR" property="orderBrief" />
+    <result column="order_file" jdbcType="VARCHAR" property="orderFile" />
+    <result column="order_give" jdbcType="VARCHAR" property="orderGive" />
+    <result column="order_take" jdbcType="VARCHAR" property="orderTake" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_brief, order_file, order_give, order_take, order_type
+  </sql>
+  <select id="getSearchCount" resultType="java.lang.Integer">
+  	select count(*) from orders
+  	where (order_brief like concat(concat('%',#{searchVO}),'%'))
+  	and order_give = #{userId}
+  </select>
+  
+  <select id="searchBySearchVO" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from orders where (order_brief like concat(concat('%',#{searchVO}),'%'))
+  	and order_give = #{userId}
+  	limit #{spage} , #{epage} 
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <select id="getOrderCount" resultType="java.lang.Integer">
+  	select count(*) from orders where order_give = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectOrderList" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from orders where order_give = #{userId} limit #{spage} , #{epage}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orders
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.no1.domain.Order">
+    insert into orders (order_id, order_brief, order_file, 
+      order_give, order_take, order_type
+      )
+    values (#{orderId,jdbcType=INTEGER}, #{orderBrief,jdbcType=VARCHAR}, #{orderFile,jdbcType=VARCHAR}, 
+      #{orderGive,jdbcType=VARCHAR}, #{orderTake,jdbcType=VARCHAR}, #{orderType,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.no1.domain.Order">
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderBrief != null">
+        order_brief,
+      </if>
+      <if test="orderFile != null">
+        order_file,
+      </if>
+      <if test="orderGive != null">
+        order_give,
+      </if>
+      <if test="orderTake != null">
+        order_take,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderBrief != null">
+        #{orderBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFile != null">
+        #{orderFile,jdbcType=VARCHAR},
+      </if>
+      <if test="orderGive != null">
+        #{orderGive,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTake != null">
+        #{orderTake,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.no1.domain.Order">
+    update orders
+    <set>
+      <if test="orderBrief != null">
+        order_brief = #{orderBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFile != null">
+        order_file = #{orderFile,jdbcType=VARCHAR},
+      </if>
+      <if test="orderGive != null">
+        order_give = #{orderGive,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTake != null">
+        order_take = #{orderTake,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.no1.domain.Order">
+    update orders
+    set order_brief = #{orderBrief,jdbcType=VARCHAR},
+      order_file = #{orderFile,jdbcType=VARCHAR},
+      order_give = #{orderGive,jdbcType=VARCHAR},
+      order_take = #{orderTake,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=INTEGER}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

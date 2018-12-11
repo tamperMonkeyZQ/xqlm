@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.no1.mapper.RecruitMapper">
+  <resultMap id="BaseResultMap" type="com.no1.domain.Recruit">
+    <id column="re_id" jdbcType="INTEGER" property="reId" />
+    <result column="re_duty" jdbcType="VARCHAR" property="reDuty" />
+    <result column="re_brief" jdbcType="VARCHAR" property="reBrief" />
+    <result column="re_sex" jdbcType="INTEGER" property="reSex" />
+    <result column="re_agebtm" jdbcType="INTEGER" property="reAgebtm" />
+    <result column="re_agetop" jdbcType="INTEGER" property="reAgetop" />
+    <result column="re_degree" jdbcType="VARCHAR" property="reDegree" />
+    <result column="re_local" jdbcType="VARCHAR" property="reLocal" />
+    <result column="re_unit" jdbcType="VARCHAR" property="reUnit" />
+    <result column="re_status" jdbcType="VARCHAR" property="reStatus" />
+    <result column="re_time" jdbcType="TIMESTAMP" property="reTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    re_id, re_duty, re_brief, re_sex, re_agebtm, re_agetop, re_degree, re_local, re_unit, 
+    re_status, re_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from recruit
+    where re_id = #{reId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from recruit
+    where re_id = #{reId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.no1.domain.Recruit">
+    insert into recruit (re_id, re_duty, re_brief, 
+      re_sex, re_agebtm, re_agetop, 
+      re_degree, re_local, re_unit, 
+      re_status, re_time)
+    values (#{reId,jdbcType=INTEGER}, #{reDuty,jdbcType=VARCHAR}, #{reBrief,jdbcType=VARCHAR}, 
+      #{reSex,jdbcType=INTEGER}, #{reAgebtm,jdbcType=INTEGER}, #{reAgetop,jdbcType=INTEGER}, 
+      #{reDegree,jdbcType=VARCHAR}, #{reLocal,jdbcType=VARCHAR}, #{reUnit,jdbcType=VARCHAR}, 
+      #{reStatus,jdbcType=VARCHAR}, #{reTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.no1.domain.Recruit">
+    insert into recruit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reId != null">
+        re_id,
+      </if>
+      <if test="reDuty != null">
+        re_duty,
+      </if>
+      <if test="reBrief != null">
+        re_brief,
+      </if>
+      <if test="reSex != null">
+        re_sex,
+      </if>
+      <if test="reAgebtm != null">
+        re_agebtm,
+      </if>
+      <if test="reAgetop != null">
+        re_agetop,
+      </if>
+      <if test="reDegree != null">
+        re_degree,
+      </if>
+      <if test="reLocal != null">
+        re_local,
+      </if>
+      <if test="reUnit != null">
+        re_unit,
+      </if>
+      <if test="reStatus != null">
+        re_status,
+      </if>
+      <if test="reTime != null">
+        re_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reId != null">
+        #{reId,jdbcType=INTEGER},
+      </if>
+      <if test="reDuty != null">
+        #{reDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="reBrief != null">
+        #{reBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="reSex != null">
+        #{reSex,jdbcType=INTEGER},
+      </if>
+      <if test="reAgebtm != null">
+        #{reAgebtm,jdbcType=INTEGER},
+      </if>
+      <if test="reAgetop != null">
+        #{reAgetop,jdbcType=INTEGER},
+      </if>
+      <if test="reDegree != null">
+        #{reDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="reLocal != null">
+        #{reLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="reUnit != null">
+        #{reUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="reStatus != null">
+        #{reStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="reTime != null">
+        #{reTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.no1.domain.Recruit">
+    update recruit
+    <set>
+      <if test="reDuty != null">
+        re_duty = #{reDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="reBrief != null">
+        re_brief = #{reBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="reSex != null">
+        re_sex = #{reSex,jdbcType=INTEGER},
+      </if>
+      <if test="reAgebtm != null">
+        re_agebtm = #{reAgebtm,jdbcType=INTEGER},
+      </if>
+      <if test="reAgetop != null">
+        re_agetop = #{reAgetop,jdbcType=INTEGER},
+      </if>
+      <if test="reDegree != null">
+        re_degree = #{reDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="reLocal != null">
+        re_local = #{reLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="reUnit != null">
+        re_unit = #{reUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="reStatus != null">
+        re_status = #{reStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="reTime != null">
+        re_time = #{reTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where re_id = #{reId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.no1.domain.Recruit">
+    update recruit
+    set re_duty = #{reDuty,jdbcType=VARCHAR},
+      re_brief = #{reBrief,jdbcType=VARCHAR},
+      re_sex = #{reSex,jdbcType=INTEGER},
+      re_agebtm = #{reAgebtm,jdbcType=INTEGER},
+      re_agetop = #{reAgetop,jdbcType=INTEGER},
+      re_degree = #{reDegree,jdbcType=VARCHAR},
+      re_local = #{reLocal,jdbcType=VARCHAR},
+      re_unit = #{reUnit,jdbcType=VARCHAR},
+      re_status = #{reStatus,jdbcType=VARCHAR},
+      re_time = #{reTime,jdbcType=TIMESTAMP}
+    where re_id = #{reId,jdbcType=INTEGER}
+  </update>
+</mapper>

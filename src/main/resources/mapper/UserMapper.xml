@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.no1.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.no1.domain.User">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_unit" jdbcType="VARCHAR" property="userUnit" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_role" jdbcType="INTEGER" property="userRole" />
+    <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_web" jdbcType="VARCHAR" property="userWeb" />
+    <result column="user_smry" jdbcType="VARCHAR" property="userSmry" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_unit, user_pwd, user_role, user_tel, user_email, user_web, user_smry
+  </sql>
+  
+  <update id="upPass">
+  	update user set user_pwd = #{pass} where user_id = #{id}
+  </update>
+  
+  <select id="getSearchCount" resultType="java.lang.Integer">
+  	select count(*) from user
+  	where (user_id like concat(concat('%',#{searchVO}),'%') or user_unit like concat(concat('%',#{searchVO}),'%'))
+  	and user_role = #{roleId}
+  </select>
+  
+  <select id="searchBySearchVO" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from user where (user_id like concat(concat('%',#{searchVO}),'%') or user_unit like concat(concat('%',#{searchVO}),'%'))
+  	and user_role = #{roleId}
+  	limit #{spage} , #{epage} 
+  </select>
+  
+  <select id="getQyUserCount" resultType="java.lang.Integer">
+  	select count(*) from user where user_role = 1
+  </select>
+  
+  <select id="getYxUserCount" resultType="java.lang.Integer">
+  	select count(*) from user where user_role = 2
+  </select>
+  
+  <select id="selectQyUserList" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from user where user_role = 1 limit #{spage} , #{epage}
+  </select>
+  
+  <select id="selectYxUserList" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from user where user_role = 2 limit #{spage} , #{epage}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from user
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.no1.domain.User">
+    insert into user (user_id, user_unit, user_pwd, 
+      user_role, user_tel, user_email, 
+      user_web, user_smry)
+    values (#{userId,jdbcType=VARCHAR}, #{userUnit,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+      #{userRole,jdbcType=INTEGER}, #{userTel,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, 
+      #{userWeb,jdbcType=VARCHAR}, #{userSmry,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.no1.domain.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userUnit != null">
+        user_unit,
+      </if>
+      <if test="userPwd != null">
+        user_pwd,
+      </if>
+      <if test="userRole != null">
+        user_role,
+      </if>
+      <if test="userTel != null">
+        user_tel,
+      </if>
+      <if test="userEmail != null">
+        user_email,
+      </if>
+      <if test="userWeb != null">
+        user_web,
+      </if>
+      <if test="userSmry != null">
+        user_smry,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userUnit != null">
+        #{userUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null">
+        #{userRole,jdbcType=INTEGER},
+      </if>
+      <if test="userTel != null">
+        #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userWeb != null">
+        #{userWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="userSmry != null">
+        #{userSmry,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.no1.domain.User">
+    update user
+    <set>
+      <if test="userUnit != null">
+        user_unit = #{userUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null">
+        user_role = #{userRole,jdbcType=INTEGER},
+      </if>
+      <if test="userTel != null">
+        user_tel = #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userWeb != null">
+        user_web = #{userWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="userSmry != null">
+        user_smry = #{userSmry,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.no1.domain.User">
+    update user
+    set user_unit = #{userUnit,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      user_role = #{userRole,jdbcType=INTEGER},
+      user_tel = #{userTel,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_web = #{userWeb,jdbcType=VARCHAR},
+      user_smry = #{userSmry,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

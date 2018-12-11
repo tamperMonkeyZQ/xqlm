@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.no1.mapper.MajorMapper">
+  <resultMap id="BaseResultMap" type="com.no1.domain.Major">
+    <id column="maj_id" jdbcType="INTEGER" property="majId" />
+    <result column="maj_name" jdbcType="VARCHAR" property="majName" />
+    <result column="maj_smry" jdbcType="VARCHAR" property="majSmry" />
+    <result column="maj_year" jdbcType="VARCHAR" property="majYear" />
+    <result column="maj_file" jdbcType="VARCHAR" property="majFile" />
+    <result column="maj_unit" jdbcType="VARCHAR" property="majUnit" />
+  </resultMap>
+  
+  <resultMap id="JoinMap" type="com.no1.domain.Major" extends="BaseResultMap">
+     <result column="user_id" jdbcType="VARCHAR" property="majSchool.userId" />
+     <result column="user_unit" jdbcType="VARCHAR" property="majSchool.userUnit" />
+     <result column="user_pwd" jdbcType="VARCHAR" property="majSchool.userPwd" />
+     <result column="user_role" jdbcType="INTEGER" property="majSchool.userRole" />
+     <result column="user_tel" jdbcType="VARCHAR" property="majSchool.userTel" />
+     <result column="user_email" jdbcType="VARCHAR" property="majSchool.userEmail" />
+     <result column="user_web" jdbcType="VARCHAR" property="majSchool.userWeb" />
+     <result column="user_smry" jdbcType="VARCHAR" property="majSchool.userSmry" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    maj_id, maj_name, maj_smry, maj_year, maj_file, maj_unit
+  </sql>
+  
+  <select id="getMajorListByUnit" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from major where maj_unit = #{majUnit}
+  </select>
+  
+   <select id="getSearchCount" resultType="java.lang.Integer">
+  	select count(*) 
+  	from major where maj_name like concat(concat('%',#{searchVO}),'%') and maj_unit = #{majUnit}
+  </select>
+  
+  <select id="searchBySearchVO" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from major where maj_name like concat(concat('%',#{searchVO}),'%') and maj_unit = #{majUnit}
+  	limit #{spage},#{epage}
+  </select>
+  
+  <select id="selectMajorNameUnique" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from major where maj_name = #{majName} and maj_unit = #{majUnit}
+  </select>
+  
+   <select id="getMajorsByUnitCount" resultType="java.lang.Integer">
+  	select
+  	count(*)
+  	from major where maj_unit = #{majUnit}
+  </select>
+  
+  <select id="selectMajorsByUnit" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from major where maj_unit = #{majUnit}
+  	limit #{spage},#{epage}
+  </select>
+  
+  <select id="selectByPrimaryKeyJoin" parameterType="java.lang.Integer" resultMap="JoinMap">
+  	select * from major left join user on maj_unit = user_id
+  	where maj_id = #{majId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from major
+    where maj_id = #{majId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from major
+    where maj_id = #{majId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.no1.domain.Major">
+    insert into major (maj_id, maj_name, maj_smry, 
+      maj_year, maj_file, maj_unit
+      )
+    values (#{majId,jdbcType=INTEGER}, #{majName,jdbcType=VARCHAR}, #{majSmry,jdbcType=VARCHAR}, 
+      #{majYear,jdbcType=VARCHAR}, #{majFile,jdbcType=VARCHAR}, #{majUnit,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.no1.domain.Major">
+    insert into major
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="majId != null">
+        maj_id,
+      </if>
+      <if test="majName != null">
+        maj_name,
+      </if>
+      <if test="majSmry != null">
+        maj_smry,
+      </if>
+      <if test="majYear != null">
+        maj_year,
+      </if>
+      <if test="majFile != null">
+        maj_file,
+      </if>
+      <if test="majUnit != null">
+        maj_unit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="majId != null">
+        #{majId,jdbcType=INTEGER},
+      </if>
+      <if test="majName != null">
+        #{majName,jdbcType=VARCHAR},
+      </if>
+      <if test="majSmry != null">
+        #{majSmry,jdbcType=VARCHAR},
+      </if>
+      <if test="majYear != null">
+        #{majYear,jdbcType=VARCHAR},
+      </if>
+      <if test="majFile != null">
+        #{majFile,jdbcType=VARCHAR},
+      </if>
+      <if test="majUnit != null">
+        #{majUnit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.no1.domain.Major">
+    update major
+    <set>
+      <if test="majName != null">
+        maj_name = #{majName,jdbcType=VARCHAR},
+      </if>
+      <if test="majSmry != null">
+        maj_smry = #{majSmry,jdbcType=VARCHAR},
+      </if>
+      <if test="majYear != null">
+        maj_year = #{majYear,jdbcType=VARCHAR},
+      </if>
+      <if test="majFile != null">
+        maj_file = #{majFile,jdbcType=VARCHAR},
+      </if>
+      <if test="majUnit != null">
+        maj_unit = #{majUnit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where maj_id = #{majId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.no1.domain.Major">
+    update major
+    set maj_name = #{majName,jdbcType=VARCHAR},
+      maj_smry = #{majSmry,jdbcType=VARCHAR},
+      maj_year = #{majYear,jdbcType=VARCHAR},
+      maj_file = #{majFile,jdbcType=VARCHAR},
+      maj_unit = #{majUnit,jdbcType=VARCHAR}
+    where maj_id = #{majId,jdbcType=INTEGER}
+  </update>
+</mapper>

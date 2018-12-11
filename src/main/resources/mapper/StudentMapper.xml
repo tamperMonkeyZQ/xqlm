@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.no1.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.no1.domain.Student">
+    <id column="stu_idcard" jdbcType="VARCHAR" property="stuIdcard" />
+    <result column="stu_name" jdbcType="VARCHAR" property="stuName" />
+    <result column="stu_sex" jdbcType="INTEGER" property="stuSex" />
+    <result column="stu_num" jdbcType="VARCHAR" property="stuNum" />
+    <result column="stu_tel" jdbcType="VARCHAR" property="stuTel" />
+    <result column="stu_unit" jdbcType="VARCHAR" property="stuUnit" />
+    <result column="stu_maj" jdbcType="INTEGER" property="stuMaj" />
+    <result column="stu_grade" jdbcType="VARCHAR" property="stuGrade" />
+    <result column="stu_gradu" jdbcType="INTEGER" property="stuGradu" />
+    <result column="stu_status" jdbcType="INTEGER" property="stuStatus" />
+    <result column="stu_update" jdbcType="TIMESTAMP" property="stuUpdate" />
+  </resultMap>
+  
+  <resultMap type="com.no1.domain.Student" id="JoinMajorType" extends="BaseResultMap">
+  	<result property="major.majId" column="maj_id" jdbcType="INTEGER"/>
+  	<result property="major.majName" column="maj_name" jdbcType="VARCHAR"/>
+  	<result property="major.majFile" column="maj_file" jdbcType="VARCHAR"/>
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    stu_idcard, stu_name, stu_sex, stu_num, stu_tel, stu_unit, stu_maj, stu_grade, stu_gradu, stu_status, stu_update
+  </sql>
+  
+  <sql id="JoinMajorList">
+  	stu_idcard, stu_name, stu_sex, stu_num, stu_tel, stu_unit, stu_maj, stu_grade, stu_gradu, stu_status, stu_update,
+  	maj_id,maj_name,maj_file
+  </sql>
+  
+  <select id="selectStuConByUser" resultMap="JoinMajorType">
+  	select 
+  	<include refid="JoinMajorList"/> 
+  	from student left join major on stu_maj=maj_id where stu_unit =#{stuUnit} and
+	(stu_name like concat(concat('%',#{stuNameSearch}),'%') or stu_num like concat(concat('%',#{stuNumSearch}),'%')) 
+	<if test="stuMaj != null">
+		and stu_maj=#{stuMaj}
+	</if> 
+	limit #{spage},#{epage}
+  </select>
+  
+  <select id="getStuConByUserCount" resultType="java.lang.Integer">
+  	select 
+  	count(*)
+  	from student left join major on stu_maj=maj_id where stu_unit =#{stuUnit} and
+	(stu_name like concat(concat('%',#{stuNameSearch}),'%') or stu_num like concat(concat('%',#{stuNumSearch}),'%')) 
+	<if test="stuMaj != null">
+		and stu_maj=#{stuMaj}
+	</if> 
+  </select>
+  
+  <select id="getStudentByUserCount" resultType="java.lang.Integer">
+  	select count(*)
+  	from student left join major on stu_maj=maj_id
+  	where stu_unit = #{stuUnit}
+  </select>
+  
+  <select id="selectStudentByUser"  resultMap="JoinMajorType">
+  	select
+  	<include refid="JoinMajorList"/>
+  	from student left join major on stu_maj=maj_id
+  	where stu_unit = #{stuUnit}
+  	limit #{spage},#{epage}
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where stu_idcard = #{stuIdcard,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from student
+    where stu_idcard = #{stuIdcard,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.no1.domain.Student">
+    insert into student (stu_idcard, stu_name, stu_sex, stu_num, stu_tel, stu_unit,
+      stu_maj, stu_grade, stu_gradu, stu_status,
+      stu_update)
+    values (#{stuIdcard,jdbcType=VARCHAR}, #{stuName,jdbcType=VARCHAR}, #{stuSex,jdbcType=INTEGER}, #{stuNum,jdbcType=VARCHAR}, 
+      #{stuTel,jdbcType=VARCHAR},#{stuUnit,jdbcType=VARCHAR},#{stuMaj,jdbcType=INTEGER}, #{stuGrade,jdbcType=VARCHAR}, 
+      #{stuGradu,jdbcType=INTEGER}, #{stuStatus,jdbcType=INTEGER},
+      #{stuUpdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.no1.domain.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuIdcard != null">
+        stu_idcard,
+      </if>
+      <if test="stuName != null">
+        stu_name,
+      </if>
+      <if test="stuSex != null">
+        stu_sex,
+      </if>
+      <if test="stuNum != null">
+        stu_num,
+      </if>
+      <if test="stuTel != null">
+        stu_tel,
+      </if>
+      <if test="stuUnit != null">
+        stu_unit,
+      </if>
+      <if test="stuMaj != null">
+        stu_maj,
+      </if>
+      <if test="stuGrade != null">
+        stu_grade,
+      </if>
+      <if test="stuGradu != null">
+        stu_gradu,
+      </if>
+       <if test="stuStatus != null">
+        stu_status,
+      </if>
+      <if test="stuUpdate != null">
+        stu_update,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuIdcard != null">
+        #{stuIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="stuName != null">
+        #{stuName,jdbcType=VARCHAR},
+      </if>
+       <if test="stuSex != null">
+        #{stuSex,jdbcType=INTEGER},
+      </if>
+      <if test="stuNum != null">
+        #{stuNum,jdbcType=VARCHAR},
+      </if>
+       <if test="stuTel != null">
+        #{stuTel,jdbcType=VARCHAR},
+      </if>
+       <if test="stuUnit != null">
+        #{stuUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="stuMaj != null">
+        #{stuMaj,jdbcType=INTEGER},
+      </if>
+      <if test="stuGrade != null">
+        #{stuGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="stuGradu != null">
+        #{stuGradu,jdbcType=INTEGER},
+      </if>
+      <if test="stuStatus != null">
+        #{stuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="stuUpdate != null">
+        #{stuUpdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.no1.domain.Student">
+    update student
+    <set>
+      <if test="stuName != null">
+        stu_name = #{stuName,jdbcType=VARCHAR},
+      </if>
+      <if test="stuSex != null">
+        stu_sex = #{stuSex,jdbcType=INTEGER},
+      </if>
+      <if test="stuNum != null">
+        stu_num = #{stuNum,jdbcType=VARCHAR},
+      </if>
+      <if test="stuTel != null">
+        stu_tel = #{stuTel,jdbcType=VARCHAR},
+      </if>
+      <if test="stuUnit != null">
+       stu_unit = #{stuUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="stuMaj != null">
+        stu_maj = #{stuMaj,jdbcType=INTEGER},
+      </if>
+      <if test="stuGrade != null">
+        stu_grade = #{stuGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="stuGradu != null">
+        stu_gradu = #{stuGradu,jdbcType=INTEGER},
+      </if>
+      <if test="stuStatus != null">
+        stu_status = #{stuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="stuUpdate != null">
+        stu_update = #{stuUpdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where stu_idcard = #{stuIdcard,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.no1.domain.Student">
+    update student
+    set stu_name = #{stuName,jdbcType=VARCHAR},
+      stu_sex = #{stuSex,jdbcType=INTEGER},
+      stu_num = #{stuNum,jdbcType=VARCHAR},
+      stu_tel = #{stuTel,jdbcType=VARCHAR},
+      stu_unit = #{stuUnit,jdbcType=VARCHAR},
+      stu_maj = #{stuMaj,jdbcType=INTEGER},
+      stu_grade = #{stuGrade,jdbcType=VARCHAR},
+      stu_gradu = #{stuGradu,jdbcType=INTEGER},
+      stu_status = #{stuStatus,jdbcType=INTEGER},
+      stu_update = #{stuUpdate,jdbcType=TIMESTAMP}
+    where stu_idcard = #{stuIdcard,jdbcType=VARCHAR}
+  </update>
+</mapper>
