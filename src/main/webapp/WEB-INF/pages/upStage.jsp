@@ -12,18 +12,17 @@
     <meta name="description" content="">
     <meta name="author" content="webThemez.com">
     <title>辽宁产教融合工作信息共享平台</title>
-    <link rel="favicon" href="assets/images/favicon.png">
+    <link rel="favicon" href="${pageContext.request.contextPath }/assets/images/favicon.png">
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" id="camera-css" href="assets/css/camera.css" type="text/css" media="all">
-    <link href="assets/css/animate.css" rel="stylesheet">
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="assets/css/BannerStyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/bootstrap-theme.css" media="screen">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/style.css">
+    <link href="${pageContext.request.contextPath }/assets/css/animate.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/assets/css/BannerStyle.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
     <script>
         function formattimestamp (timestamp){
             var timestamp = new Date(timestamp);
@@ -169,7 +168,11 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right mainNav">
                 <li><a href="#">企业信息</a></li>
-                <li><a href="#">招聘信息</a></li><li><a href="#">毕业生注册</a></li><li><a href="#">管理员登录</a></li></ul>
+                <li><a href="#">院校信息</a></li>
+                <li><a href="#">招聘信息</a></li>
+                <li><a href="#">毕业生注册</a></li>
+                <li><a href="#">管理员登录</a></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -184,13 +187,13 @@
     <!-- 轮播（Carousel）项目 -->
     <div class="carousel-inner">
         <div class="item">
-            <img src="image/pic3.jpg" alt="First slide">
+            <img src="${pageContext.request.contextPath }/images/pic3.jpg" alt="First slide">
         </div>
         <div class="item active">
-            <img src="image/pic2.jpg" alt="Second slide">
+            <img src="${pageContext.request.contextPath }/images/pic3.jpg" alt="Second slide">
         </div>
         <div class="item">
-            <img src="image/pic4.jpg" alt="Third slide">
+            <img src="${pageContext.request.contextPath }/images/pic3.jpg" alt="Third slide">
         </div>
     </div>
     <!-- 轮播（Carousel）导航 -->
@@ -206,12 +209,29 @@
             <div class="left">
                 <ul id="work_left">
 
-                    <li class="active" style="opacity: 1;"><p></p><a target="_blank" href="/html/work13.html"><img src="/myImage/work1.jpg"></a></li><li class="" style="opacity: 0;"><p></p><a target="_blank" href="/html/work12.html"><img src="/myImage/work2.jpg"></a></li><li class="" style="opacity: 0;"><p></p><a target="_blank" href="/html/work11.html"><img src="/myImage/work3.jpg"></a></li><li class="" style="opacity: 0;"><p></p><a target="_blank" href="/html/work10.html"><img src="/myImage/work4.jpg"></a></li><li class="" style="opacity: 0;"><p></p><a target="_blank" href="/html/work9.html"><img src="/myImage/work5.jpg"></a></li></ul>
+                    <li class="active" style="opacity: 1;"><p></p><a target="_blank" href="/html/work13.html"><img src="${pageContext.request.contextPath }/images/1.png"></a></li>
+                    <li class="" style="opacity: 0;"><p></p><a target="_blank" href="/html/work12.html"><img src="${pageContext.request.contextPath }/images/2.png"></a></li>
+                    <li class="" style="opacity: 0;"><p></p><a target="_blank" href="/html/work11.html"><img src="${pageContext.request.contextPath }/images/3.png"></a></li>
+                    <li class="" style="opacity: 0;"><p></p><a target="_blank" href="/html/work10.html"><img src="${pageContext.request.contextPath }/images/1.png"></a></li>
+                    <li class="" style="opacity: 0;"><p></p><a target="_blank" href="/html/work9.html"><img src="${pageContext.request.contextPath }/images/2.png"></a></li>
+                </ul>
             </div>
             <div class="right">
                 <ul id="work_right">
-
-                    <li title="省教育厅召开本科高校向应用型转变工作培训交流会" class="active"><span class="fa fa-pencil-square-o"></span> 省教育厅召开本科高校向应用型转变工作培训交流会</li><li title="省教育厅工业高等教育处组织召开向应用型转变工作座谈会" class=""><span class="fa fa-pencil-square-o"></span>省教育厅工业高等教育处组织召开向应用型转变工作座谈会</li><li title="省教育厅召开向应用型转变试点工作调研推进会" class=""><span class="fa fa-pencil-square-o"></span>省教育厅召开向应用型转变试点工作调研推进会</li><li title="我省印发本科高校向应用型转变评价指标体系深入推进本科 高校向应用型转变" class=""><span class="fa fa-pencil-square-o"></span>我省印发本科高校向应用型转变评价指标体系深入推进本科 高校向应用型转变</li><li title="省教育厅组织深入研讨向应用型转变试点学校和试点专业 2 个 指导性评价指标体系" class=""><span class="fa fa-pencil-square-o"></span>省教育厅组织深入研讨向应用型转变试点学校和试点专业 2 个 指导性评价指标体系</li></ul>
+                    <li title="省教育厅召开本科高校向应用型转变工作培训交流会" class="active">
+                        <span class="fa fa-pencil-square-o"></span> 省教育厅召开本科高校向应用型转变工作培训交流会
+                    </li>
+                    <li title="省教育厅工业高等教育处组织召开向应用型转变工作座谈会" class=""><span class="fa fa-pencil-square-o"></span>省教育厅工业高等教育处组织召开向应用型转变工作座谈会
+                    </li>
+                    <li title="省教育厅召开向应用型转变试点工作调研推进会" class=""><span class="fa fa-pencil-square-o"></span>省教育厅召开向应用型转变试点工作调研推进会
+                    </li>
+                    <li title="我省印发本科高校向应用型转变评价指标体系深入推进本科 高校向应用型转变" class="">
+                        <span class="fa fa-pencil-square-o"></span>我省印发本科高校向应用型转变评价指标体系深入推进本科
+                        高校向应用型转变
+                    </li>
+                    <li title="省教育厅组织深入研讨向应用型转变试点学校和试点专业 2 个 指导性评价指标体系" class=""><span
+                            class="fa fa-pencil-square-o"></span>省教育厅组织深入研讨向应用型转变试点学校和试点专业 2 个 指导性评价指标体系</li>
+                </ul>
             </div>
         </div>
         <script>
@@ -286,52 +306,52 @@
             </div>
         </div>
     </div>
-    <script>
-        var Items = [{"csId":5,"csSect":2,"csTitle":"辽宁省教育厅关于进一步优化高等学校学科专业结构的指导意见","ctCktime":1514981092000,"ctFileName":"辽教发[2017]94号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2018/Column_0103_0103/4352.html"},{"csId":4,"csSect":2,"csTitle":"辽宁省教育厅关于深入推进校企联盟建设的指导意见","ctCktime":1490702687000,"ctFileName":"辽教发[2017]23号","ctIsout":0,"ctUrl":"8f482ffd92c44bc0802ddb1904f0528d"},{"csId":3,"csSect":2,"csTitle":"辽宁省加强校企联盟建设实施方案（试行）的通知","ctCktime":1483358685000,"ctFileName":"辽政办发[2016]163号","ctIsout":0,"ctUrl":"e4cbcc2f73f64f5dbfa5b087a5d63add"},{"csId":2,"csSect":2,"csTitle":"辽宁省人民政府办公厅关于推动本科高校向应用型转变的实施意见","ctCktime":1446811480000,"ctFileName":"辽政办发[2015]89号","ctIsout":0,"ctUrl":"d54aeb08d2e141058bd08f9f79051f73"},{"csId":1,"csSect":2,"csTitle":"教育部、发展改革委、财政部关于引导部分地方普通本科高校向应用型转变的指导意见","ctCktime":1445601878000,"ctFileName":"教发[2015]7号","ctIsout":0,"ctUrl":"6b19ddb6d84e432c820aec0d9e8ba260"},{"csId":17,"csSect":3,"csTitle":"辽宁省教育厅办公室关于召开普通高等学校向应用型转变工作交流会的通知","ctCktime":1539266094000,"ctFileName":"辽教办[2018]193 号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2018/Column_0103_1011/4505.html"},{"csId":16,"csSect":3,"csTitle":"辽宁省教育厅办公室关于开展向应用型转变试点高校及专业阶段性检查工作的通知","ctCktime":1530021283000,"ctFileName":"辽教办〔2018〕124号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2018/Column_0103_0626/4444.html"},{"csId":15,"csSect":3,"csTitle":"辽宁省教育厅办公室关于召开普通本科高等学校应用型人才培养专家指导委员会工作会议的通知","ctCktime":1526651669000,"ctFileName":"辽教发〔2018〕91号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2018/Column_0103_0518/4418.html"},{"csId":14,"csSect":3,"csTitle":"辽宁省教育厅关于公布辽宁省普通本科高等学校向应用型转变示范高校及示范专业名单的通知","ctCktime":1511963642000,"ctFileName":"辽教函[2017]779号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2017/Column_0103_1129/4316.html"},{"csId":13,"csSect":3,"csTitle":"辽宁省教育厅办公室关于开展普通本科高等学校向应用型转变示范高校及示范专业遴选工作的通知","ctCktime":1506606827000,"ctFileName":"辽教办[2017]132 号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2017/Column_0103_0928/4265.html"},{"csId":30,"csSect":1,"csTitle":"省教育厅召开本科高校向应用型转变工作培训交流会","ctCktime":1500042915000,"ctIsout":0,"ctUrl":"work13"},{"csId":29,"csSect":1,"csTitle":"省教育厅工业高等教育处组织召开向应用型转变工作座谈会","ctCktime":1495031705000,"ctIsout":0,"ctUrl":"work12"},{"csId":28,"csSect":1,"csTitle":"省教育厅召开向应用型转变试点工作调研推进会","ctCktime":1484231688000,"ctIsout":0,"ctUrl":"work11"},{"csId":27,"csSect":1,"csTitle":"我省印发本科高校向应用型转变评价指标体系深入推进本科 高校向应用型转变","ctCktime":1482158075000,"ctIsout":0,"ctUrl":"work10"},{"csId":26,"csSect":1,"csTitle":"省教育厅组织深入研讨向应用型转变试点学校和试点专业 2 个 指导性评价指标体系","ctCktime":1481639658000,"ctIsout":0,"ctUrl":"work9"}];
-        var indexs = 0;
-        $.each(Items, function (i, item) {
-            // 2政策文件 3通知公告 1工作动态
-            if (item.csSect == 2) {
-                str = "<li class=\"list-group-item fist-item\" style=\"border-left: 0;border-right: 0\">\n" +
-                    "                                <span class=\"pull-right\">\n" +
-                    "                                    " + item.ctFileName + "\n" +
-                    "                                </span>\n" +
-                    "                            <span class=\"fa fa-file-text-o\"></span><a target='_blank' href=\"assets/pdf/web/viewer.html?file=/pdf/" + item.ctUrl + ".pdf\" style=\"color:#000\" title= " + item.csTitle + ">&nbsp;" + item.csTitle.substring(0, 25) + "...</a>\n" +
-                    "                        </li>";
-                if (item.ctIsout == 1)
-                    str = "<li class=\"list-group-item fist-item\" style=\"border-left: 0;border-right: 0\">\n" +
-                        "                                <span class=\"pull-right\">\n" +
-                        "                                    " + item.ctFileName + "\n" +
-                        "                                </span>\n" +
-                        "                            <span class=\"fa fa-file-text-o\"></span><a target='_blank' href=" + item.ctUrl + " style=\"color:#000\" title= \" "+ item.csTitle +" \">&nbsp;" + item.csTitle.substring(0, 25) + "...</a>\n" +
-                        "                        </li>";
-                $('#plicyFile').append(str);
-            }
-            else if(item.csSect == 3){
-                str = "<li class=\"list-group-item fist-item\" style=\"border-left: 0;border-right: 0\">\n" +
-                    "                            <span class=\"fa fa-volume-down\"></span><a target='_blank' href=\"assets/pdf/web/viewer.html?file=/pdf/" + item.ctUrl + ".pdf\" style=\"color:#000\" title= " + item.csTitle + ">&nbsp;" + item.csTitle.substring(0, 35) + "...</a>\n" +
-                    "                        </li>";
-                if (item.ctIsout == 1)
-                    str = "<li class=\"list-group-item fist-item\" style=\"border-left: 0;border-right: 0\">\n" +
-                        "                            <span class=\"fa fa-volume-down\"></span><a target='_blank' href=" + item.ctUrl + " style=\"color:#000\" title= \" "+ item.csTitle + "\">&nbsp;" + item.csTitle.substring(0, 35) + "...</a>\n" +
-                        "                        </li>";
-                $('#notify').append(str);
-            }
-            else{
-                if(indexs==0) {
-                    str2 = "<li title='"+item.csTitle+"' class=\"active\"><span class=\"fa fa-pencil-square-o\"></span> " + item.csTitle+ "</li>";
-                    str1="<li class=\"active\" style=\"opacity: 1;\"><p></p><a target='_blank' href=\"/html/"+item.ctUrl+".html\"><img src=\"/myImage/work"+(++indexs)+".jpg\"></a></li>"
-                }
-                else {
-                    str1="<li class=\"\" style=\"opacity: 1;\"><p></p><a target='_blank' href=\"/html/"+item.ctUrl+".html\"><img src=\"/myImage/work"+(++indexs)+".jpg\"></a></li>"
-                    str2 = "<li title='"+item.csTitle+"' class=\"\"><span class=\"fa fa-pencil-square-o\"></span>" + item.csTitle+ "</li>";
-                }
-                $("#work_left").append(str1);
-                $("#work_right").append(str2);
-            }
+    <%--<script>--%>
+        <%--var Items = [{"csId":5,"csSect":2,"csTitle":"辽宁省教育厅关于进一步优化高等学校学科专业结构的指导意见","ctCktime":1514981092000,"ctFileName":"辽教发[2017]94号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2018/Column_0103_0103/4352.html"},{"csId":4,"csSect":2,"csTitle":"辽宁省教育厅关于深入推进校企联盟建设的指导意见","ctCktime":1490702687000,"ctFileName":"辽教发[2017]23号","ctIsout":0,"ctUrl":"8f482ffd92c44bc0802ddb1904f0528d"},{"csId":3,"csSect":2,"csTitle":"辽宁省加强校企联盟建设实施方案（试行）的通知","ctCktime":1483358685000,"ctFileName":"辽政办发[2016]163号","ctIsout":0,"ctUrl":"e4cbcc2f73f64f5dbfa5b087a5d63add"},{"csId":2,"csSect":2,"csTitle":"辽宁省人民政府办公厅关于推动本科高校向应用型转变的实施意见","ctCktime":1446811480000,"ctFileName":"辽政办发[2015]89号","ctIsout":0,"ctUrl":"d54aeb08d2e141058bd08f9f79051f73"},{"csId":1,"csSect":2,"csTitle":"教育部、发展改革委、财政部关于引导部分地方普通本科高校向应用型转变的指导意见","ctCktime":1445601878000,"ctFileName":"教发[2015]7号","ctIsout":0,"ctUrl":"6b19ddb6d84e432c820aec0d9e8ba260"},{"csId":17,"csSect":3,"csTitle":"辽宁省教育厅办公室关于召开普通高等学校向应用型转变工作交流会的通知","ctCktime":1539266094000,"ctFileName":"辽教办[2018]193 号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2018/Column_0103_1011/4505.html"},{"csId":16,"csSect":3,"csTitle":"辽宁省教育厅办公室关于开展向应用型转变试点高校及专业阶段性检查工作的通知","ctCktime":1530021283000,"ctFileName":"辽教办〔2018〕124号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2018/Column_0103_0626/4444.html"},{"csId":15,"csSect":3,"csTitle":"辽宁省教育厅办公室关于召开普通本科高等学校应用型人才培养专家指导委员会工作会议的通知","ctCktime":1526651669000,"ctFileName":"辽教发〔2018〕91号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2018/Column_0103_0518/4418.html"},{"csId":14,"csSect":3,"csTitle":"辽宁省教育厅关于公布辽宁省普通本科高等学校向应用型转变示范高校及示范专业名单的通知","ctCktime":1511963642000,"ctFileName":"辽教函[2017]779号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2017/Column_0103_1129/4316.html"},{"csId":13,"csSect":3,"csTitle":"辽宁省教育厅办公室关于开展普通本科高等学校向应用型转变示范高校及示范专业遴选工作的通知","ctCktime":1506606827000,"ctFileName":"辽教办[2017]132 号","ctIsout":1,"ctUrl":"http://www.upln.cn/html/2017/Column_0103_0928/4265.html"},{"csId":30,"csSect":1,"csTitle":"省教育厅召开本科高校向应用型转变工作培训交流会","ctCktime":1500042915000,"ctIsout":0,"ctUrl":"work13"},{"csId":29,"csSect":1,"csTitle":"省教育厅工业高等教育处组织召开向应用型转变工作座谈会","ctCktime":1495031705000,"ctIsout":0,"ctUrl":"work12"},{"csId":28,"csSect":1,"csTitle":"省教育厅召开向应用型转变试点工作调研推进会","ctCktime":1484231688000,"ctIsout":0,"ctUrl":"work11"},{"csId":27,"csSect":1,"csTitle":"我省印发本科高校向应用型转变评价指标体系深入推进本科 高校向应用型转变","ctCktime":1482158075000,"ctIsout":0,"ctUrl":"work10"},{"csId":26,"csSect":1,"csTitle":"省教育厅组织深入研讨向应用型转变试点学校和试点专业 2 个 指导性评价指标体系","ctCktime":1481639658000,"ctIsout":0,"ctUrl":"work9"}];--%>
+        <%--var indexs = 0;--%>
+        <%--$.each(Items, function (i, item) {--%>
+            <%--// 2政策文件 3通知公告 1工作动态--%>
+            <%--if (item.csSect == 2) {--%>
+                <%--str = "<li class=\"list-group-item fist-item\" style=\"border-left: 0;border-right: 0\">\n" +--%>
+                    <%--"                                <span class=\"pull-right\">\n" +--%>
+                    <%--"                                    " + item.ctFileName + "\n" +--%>
+                    <%--"                                </span>\n" +--%>
+                    <%--"                            <span class=\"fa fa-file-text-o\"></span><a target='_blank' href=\"assets/pdf/web/viewer.html?file=/pdf/" + item.ctUrl + ".pdf\" style=\"color:#000\" title= " + item.csTitle + ">&nbsp;" + item.csTitle.substring(0, 25) + "...</a>\n" +--%>
+                    <%--"                        </li>";--%>
+                <%--if (item.ctIsout == 1)--%>
+                    <%--str = "<li class=\"list-group-item fist-item\" style=\"border-left: 0;border-right: 0\">\n" +--%>
+                        <%--"                                <span class=\"pull-right\">\n" +--%>
+                        <%--"                                    " + item.ctFileName + "\n" +--%>
+                        <%--"                                </span>\n" +--%>
+                        <%--"                            <span class=\"fa fa-file-text-o\"></span><a target='_blank' href=" + item.ctUrl + " style=\"color:#000\" title= \" "+ item.csTitle +" \">&nbsp;" + item.csTitle.substring(0, 25) + "...</a>\n" +--%>
+                        <%--"                        </li>";--%>
+                <%--$('#plicyFile').append(str);--%>
+            <%--}--%>
+            <%--else if(item.csSect == 3){--%>
+                <%--str = "<li class=\"list-group-item fist-item\" style=\"border-left: 0;border-right: 0\">\n" +--%>
+                    <%--"                            <span class=\"fa fa-volume-down\"></span><a target='_blank' href=\"assets/pdf/web/viewer.html?file=/pdf/" + item.ctUrl + ".pdf\" style=\"color:#000\" title= " + item.csTitle + ">&nbsp;" + item.csTitle.substring(0, 35) + "...</a>\n" +--%>
+                    <%--"                        </li>";--%>
+                <%--if (item.ctIsout == 1)--%>
+                    <%--str = "<li class=\"list-group-item fist-item\" style=\"border-left: 0;border-right: 0\">\n" +--%>
+                        <%--"                            <span class=\"fa fa-volume-down\"></span><a target='_blank' href=" + item.ctUrl + " style=\"color:#000\" title= \" "+ item.csTitle + "\">&nbsp;" + item.csTitle.substring(0, 35) + "...</a>\n" +--%>
+                        <%--"                        </li>";--%>
+                <%--$('#notify').append(str);--%>
+            <%--}--%>
+            <%--else{--%>
+                <%--if(indexs==0) {--%>
+                    <%--str2 = "<li title='"+item.csTitle+"' class=\"active\"><span class=\"fa fa-pencil-square-o\"></span> " + item.csTitle+ "</li>";--%>
+                    <%--str1="<li class=\"active\" style=\"opacity: 1;\"><p></p><a target='_blank' href=\"/html/"+item.ctUrl+".html\"><img src=\"/myImage/work"+(++indexs)+".jpg\"></a></li>"--%>
+                <%--}--%>
+                <%--else {--%>
+                    <%--str1="<li class=\"\" style=\"opacity: 1;\"><p></p><a target='_blank' href=\"/html/"+item.ctUrl+".html\"><img src=\"/myImage/work"+(++indexs)+".jpg\"></a></li>"--%>
+                    <%--str2 = "<li title='"+item.csTitle+"' class=\"\"><span class=\"fa fa-pencil-square-o\"></span>" + item.csTitle+ "</li>";--%>
+                <%--}--%>
+                <%--$("#work_left").append(str1);--%>
+                <%--$("#work_right").append(str2);--%>
+            <%--}--%>
 
-        });
-    </script>
+        <%--});--%>
+    <%--</script>--%>
 
 
 
