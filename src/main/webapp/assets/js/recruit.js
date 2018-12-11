@@ -83,3 +83,4 @@ function itemsFormatter(value, row, index){
         '</div>'
     ].join('');
 }
+

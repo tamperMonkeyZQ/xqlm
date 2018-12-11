@@ -44,10 +44,20 @@ public class UpStageController {
     }
     @ResponseBody
     @RequestMapping(value = "/recruitLoad.action",method = RequestMethod.GET)
-    public TableInfo getUnivecity(HttpServletResponse response, @RequestParam(value = "pageNumber") int pageNumber,
+    public TableInfo recruitLoad(HttpServletResponse response, @RequestParam(value = "pageNumber") int pageNumber,
                                   @RequestParam(value = "pageSize") int pageSize){
         TableInfo tableInfo = new TableInfo();
         List<Recruit> page = recruitService.getAll(pageNumber, pageSize);
+        tableInfo.setRows(page);
+        tableInfo.setTotal(12);
+        return tableInfo;
+    }@ResponseBody
+    @RequestMapping(value = "/recruitSearch.action",method = RequestMethod.GET)
+    public TableInfo recruitSearch(HttpServletResponse response, @RequestParam(value = "pageNumber") int pageNumber,
+                                  @RequestParam(value = "pageSize") int pageSize,
+                                   @RequestParam(value = "searchVO") String searchVO){
+        TableInfo tableInfo = new TableInfo();
+        List<Recruit> page = recruitService.search(pageNumber, pageSize,searchVO);
         tableInfo.setRows(page);
         tableInfo.setTotal(12);
         return tableInfo;

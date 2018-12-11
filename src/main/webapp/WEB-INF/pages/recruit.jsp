@@ -74,12 +74,64 @@
         <%--</div>--%>
         <div class="col-md-12">
             <div class="box" style="width: 100%;border: 0px;height: 50px;">
-                <div style="width: 80%;float: left;height: 33px;"><input style=" width:100%;border: 2px #008DF2  solid;padding: 10px;" placeholder=" 搜索你感兴趣的职位"></div>
-                <div style="width: 20%;background-color:#008DF2 ;float: left;height:43px;text-align:center;"><span style="width:100%;line-height:43px;color: #fff;font-size: 18px;">搜索</span></div>
+                <div style="width: 80%;float: left;height: 33px;"><input id="search_value" style=" width:100%;border: 2px #008DF2  solid;padding: 10px;" placeholder=" 搜索你感兴趣的职位"></div>
+                <button id="search_button" style="width: 20%;background-color:#008DF2 ;float: left;height:43px;text-align:center;"><span  style="width:100%;line-height:43px;color: #fff;font-size: 18px;">搜索</span></button>
             </div>
             <table id="test-table" class="table table-hover table-striped table-condensed table-bordered"></table>
         </div>
     </div>
 </div>
 </body>
+<script>
+    $("#search_button").click(function(){
+        var searchVO = $("#search_value").val();
+        $("#test-table").bootstrapTable('destroy');
+        $('#test-table').bootstrapTable({
+            method : 'GET',
+            url: encodeURI("/xqlm/upStage/recruitSearch.action?searchVO="+searchVO),
+            cache : false,
+            striped : true,
+            pagination : true, //在表格底部显示分页工具栏
+            pageSize : 10, //默认每页条数
+            pageNumber : 1, //默认分页
+            pageList : [ 10, 20, 50, 100, 200, 500 ],//分页数
+            showColumns : false, //显示隐藏列
+            showRefresh : false, //显示刷新按钮
+            showExport : false,
+            singleselect : true,
+            clickToSelect: true, // 单击行即可以选中
+            search : false,//显示搜素表单
+            silent : true, //刷新事件必须设置
+            sidePagination : "server", //表示服务端请求
+            columns : [
+                {
+                    formatter:itemsFormatter
+                }],
+            queryParamsType: "undefined",
+            queryParams: function queryParams(params) {   //设置查询参数
+                //var x = $("#myId").val();
+                var param = {
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    //myId: x,
+                    // searchText: params.searchText
+                };
+                return param;
+            },
+            formatLoadingMessage : function() {
+                return "请稍等，正在加载中...";
+            },
+
+            formatNoMatches : function() {
+                return '无符合条件的记录';
+            },
+            //注册加载子表的事件。注意下这里的三个参数！
+            onExpandRow: function (index, row, $detail) {
+                oInit.InitSubTable(index, row, $detail);
+            }
+
+        });
+        $("thead").remove();
+    });
+</script>
 </html>
