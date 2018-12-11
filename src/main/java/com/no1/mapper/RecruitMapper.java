@@ -1,5 +1,6 @@
 package com.no1.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.no1.domain.Recruit;
@@ -21,4 +22,6 @@ public interface RecruitMapper {
     int updateByPrimaryKey(Recruit record);
 
     List<Recruit> getAll();
+
+    List<Recruit> getAllBySearchVO(@Param("searchVO") String searchVO);
 }

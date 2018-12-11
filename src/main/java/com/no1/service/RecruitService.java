@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface RecruitService {
     List<Recruit> getAll(int pageNumber, int pageSize );
+    List<Recruit> search(int pageNumber, int pageSize , String searchVO);
 }

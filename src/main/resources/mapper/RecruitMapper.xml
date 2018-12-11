@@ -19,6 +19,13 @@
     re_status, re_time
   </sql>
 
+  <select id="getAllBySearchVO" resultMap="BaseResultMap">
+        select * from
+        recruit
+        wherer re_local like concat(concat('%',#{searchVO}),'%')
+        or re_duty like concat(concat('%',#{searchVO}),'%')
+  </select>
+
   <select id="getAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
