@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="webThemez.com">
-    <title>辽宁产教融合工作信息共享平台</title>
+    <title>辽宁省软件校企联盟就业服务平台</title>
     <link rel="favicon" href="${pageContext.request.contextPath }/assets/images/favicon.png">
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/bootstrap.min.css">
@@ -169,10 +169,10 @@
             <img src="${pageContext.request.contextPath }/images/pic3.jpg" alt="First slide">
         </div>
         <div class="item active">
-            <img src="${pageContext.request.contextPath }/images/pic3.jpg" alt="Second slide">
+            <img src="${pageContext.request.contextPath }/images/pic2.jpg" alt="Second slide">
         </div>
         <div class="item">
-            <img src="${pageContext.request.contextPath }/images/pic3.jpg" alt="Third slide">
+            <img src="${pageContext.request.contextPath }/images/pic1.jpg" alt="Third slide">
         </div>
     </div>
     <!-- 轮播（Carousel）导航 -->
