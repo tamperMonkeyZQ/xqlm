@@ -30,8 +30,8 @@
             <ul class="nav navbar-nav pull-right mainNav">
                 <li><a style="font-size: 14px" href="#">企业信息</a></li>
                 <li><a style="font-size: 14px" href="#">院校信息</a></li>
-                <li><a style="font-size: 14px" href="#">招聘信息</a></li>
-                <li><a style="font-size: 14px" href="#">毕业生注册</a></li>
+                <li><a style="font-size: 14px" href="${pageContext.request.contextPath }/upStage/recruit.action">招聘信息</a></li>
+                <li><a style="font-size: 14px" href="${pageContext.request.contextPath }/upStage/goUpStageLogin.action">毕业生注册</a></li>
                 <li><a style="font-size: 14px" href="#">管理员登录</a></li>
             </ul>
         </div>
