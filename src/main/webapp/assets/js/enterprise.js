@@ -6,7 +6,7 @@ $(function (){
     $("#test-table").bootstrapTable('destroy');
     $('#test-table').bootstrapTable({
         method : 'GET',
-        url: "/xqlm/upStage/schoolLoad.action",
+        url: "/xqlm/upStage/enterpriseLoad.action",
         cache : false,
         striped : true,
         pagination : true, //在表格底部显示分页工具栏
@@ -59,6 +59,8 @@ function itemsFormatter(value, row, index){
         row.userTel = '暂无';
     if(row.userEmail == null)
         row.userEmail = '暂无';
+    if(row.userWeb == null)
+        row.userWeb = "javascript:alert('暂无')";
     return [
         '<div class="content">\n' +
         '<dl class="clearfix">\n' +
@@ -70,7 +72,7 @@ function itemsFormatter(value, row, index){
         '</p>\n' +
         '</dt>\n' +
         '<dd class="pull-right">\n' +
-        '<a href="'+row.userWeb+'" target="_blank"><span style="float: right;margin-right: 10px;">官方网站</span></a>\n' +
+        '<span style="float: right;margin-right: 10px;">官方网站：<a href="'+row.userWeb+'" target="_blank">点击进入</a></span>\n' +
         '</dd>'+
         '<div clas="bottom clearfix" style="margin-top: 60px;padding: 10px;">\n' +
         '<p class="pull-left paper-desc">\n' +

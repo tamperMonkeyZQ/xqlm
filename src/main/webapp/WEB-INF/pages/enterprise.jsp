@@ -24,7 +24,7 @@
     <script src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath }/assets/js/bootstrap-table/bootstrap-table.js"></script>
     <script src="${pageContext.request.contextPath }/assets/js/bootstrap-table/bootstrap-table-zh-CN.js"></script>
-    <script src="${pageContext.request.contextPath }/assets/js/school.js"></script>
+    <script src="${pageContext.request.contextPath }/assets/js/enterprise.js"></script>
 </head>
 <body style="background-color: #fff;" class=" pace-done">
 <jsp:include page="Header.jsp"></jsp:include>
@@ -73,7 +73,7 @@
         <%--</div>--%>
         <div class="col-md-12">
             <div class="box" style="width: 100%;border: 0px;height: 50px;">
-                <div style="width: 80%;float: left;height: 33px;"><input id="search_value" style=" width:100%;border: 2px #008DF2  solid;padding: 10px;" placeholder=" 搜索你感兴趣的学校"></div>
+                <div style="width: 80%;float: left;height: 33px;"><input id="search_value" style=" width:100%;border: 2px #008DF2  solid;padding: 10px;" placeholder=" 搜索你感兴趣的企业"></div>
                 <button id="search_button" style="width: 20%;background-color:#008DF2 ;float: left;height:43px;text-align:center;"><span  style="width:100%;line-height:43px;color: #fff;font-size: 18px;">搜索</span></button>
             </div>
             <table id="test-table" class="table table-hover table-striped table-condensed table-bordered"></table>
@@ -87,7 +87,7 @@
         $("#test-table").bootstrapTable('destroy');
         $('#test-table').bootstrapTable({
             method : 'GET',
-            url: encodeURI("/xqlm/upStage/userSearch.action?role=2&searchVO="+searchVO),
+            url: encodeURI("/xqlm/upStage/userSearch.action?role=1&searchVO="+searchVO),
             cache : false,
             striped : true,
             pagination : true, //在表格底部显示分页工具栏
@@ -133,3 +133,4 @@
         $("thead").remove();
     });
 </script>
+

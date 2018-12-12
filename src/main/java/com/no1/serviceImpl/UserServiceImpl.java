@@ -87,6 +87,9 @@ public class UserServiceImpl implements UserService{
 	public Map<String, Object> selectUsersBySearchVO(String searchVO,
 			int spage, int epage,int role) {
 		// TODO Auto-generated method stub
+		int t = epage;
+		epage =spage*t;
+		spage = (spage-1)*t;
 		List<User> userList = userMapper.searchBySearchVO(searchVO, spage, epage,role);
 		int count = userMapper.getSearchCount(searchVO,role);
 		Map<String,Object> map = new HashMap<String, Object>();
